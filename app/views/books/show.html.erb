@@ -1,2 +1,63 @@
-<h1>Book#show</h1>
-<p>Find me in app/views/book/show.html.erb</p>
+<p id="notice">You have created book successfully.</p>
+<dvi class="container px-5 px-sm-0">
+  <dvi class="row">
+    <dvi class="col-md-3">
+      <h2>User info</h2>
+      <% if @user.profile_image.attached? %>
+        <%=image_tag user.profile_image, size: "100x100" %>
+      <% else %>
+        <%= image_tag 'no_image', size: "100x100" %>
+      <% end %>
+      <table class="table">
+        <tbody>
+          <tr></tr>
+          <tr>
+            <th>name</th>
+            <th><%= @user.name %></th>
+          </tr>
+          <tr>
+            <th>introduction</th>
+            <th><%= @user.introduction %></th>
+            <th></th>
+          </tr>
+        </tbody>
+      </table>
+      <dvi class="row">
+        <%= link_to edit_user_path(@user), class: "btn btn-outline-secondary btn-block" do %>
+          <i class="fas fa-user-cog"></i>
+        <% end %>
+      </dvi>
+
+      <h2>New book</h2>
+      <%= form_with model: @book do |f| %>
+        <p>Title</p>
+      <%= f.text_field :title %>
+
+        <p>Opinion</p>
+        <%=f.text_area :body %>
+
+        <%=f.submit 'Create Book' %>
+      <% end %>
+    </dvi>
+    <dvi class="col-md-8 offset-md-1"></dvi>
+    <h2>Book detail</h2>
+    <table class="table">
+      <tbody>
+        <tr>
+          <td>
+            <%= link_to book_path(@book.id) do %>
+              <%=book.title %>
+            <% end %>
+          </td>
+          <td>
+            <%= book.body %>
+          </td>
+          <td>
+            <%= link_to edit_book(book.id.edit), class="btn btn-sm btn-success" do %>
+              Edit
+            <% end %>
+              
+          </td>
+        </tr>
+      </tbody>
+    </table>
