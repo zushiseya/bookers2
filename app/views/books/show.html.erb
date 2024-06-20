@@ -1,5 +1,5 @@
-<p id="notice">You have created book successfully.</p>
-<%= render 'info', books: @book %> 
+<div><%= flash[:notice] %></div>
+<%= render 'info', books: @book, user: @user %> 
 <div class="col-md-8 offset-md-1">
   <h2>Book detail</h2>
   <table class="table">
