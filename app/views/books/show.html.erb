@@ -1,12 +1,12 @@
 <div><%= flash[:notice] %></div>
-<%= render 'info', books: @book, user: @user %> 
+<%= render 'info', books: @books, user: @user %> 
 <div class="col-md-8 offset-md-1">
   <h2>Book detail</h2>
   <table class="table">
     <tbody>
       <tr>
         <td>
-          <%= link_to user_path(current_user.id) do %>
+          <%= link_to user_path(@user) do %>
             <% if @user.profile_image.attached? %>
               <%= image_tag @user.profile_image, size: "100x100" %>
             <% else %>
